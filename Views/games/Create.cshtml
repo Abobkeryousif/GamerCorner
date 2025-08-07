@@ -1,0 +1,50 @@
+﻿@model CreateGameFormViewModel
+@{
+    ViewData["Title"] = "Add Game";
+}
+
+<p>Create Game</p>
+<h4><i class="bi bi-plus-circle-dotted btn-lg"></i>
+    Add new Game</h4>
+
+<form asp-controller="games" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="Name" class="form-label mt-4"></label>
+                <input type="text" class="form-control" asp-for="Name" placeholder="Enter Game Name">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryId" class="form-label mt-4"></label>
+                <select class="form-select" asp-for="CategoryId" asp-items="Model.Categories">
+                    <option>Select Category</option>                  
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SelectedDevices" class="form-label mt-4"></label>
+                <select class="form-select" asp-for="SelectedDevices" asp-items="Model.Devices">
+                    <option>Select Platform</option>
+                </select>
+                <span asp-validation-for="SelectedDevices" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description" class="form-label mt-4"></label>
+                <textarea asp-for="Description" class="form-control" placeholder="Game Description"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Cover" class="form-label mt-4"></label>
+                <input type="file" class="form-control"  asp-for="Cover">
+                <small class="form-text text-muted">Only Support .png , .jpg , jpeg And Max Size 2MB</small>
+            </div>
+                <span asp-validation-for="Cover" class="text-danger d-block"></span>
+            <button type="submit" class="btn btn-light text-bg-primary mt-3">Save</button>   
+            </div>
+        </div>
+        <div class="col-md-6"></div>
+</form>
