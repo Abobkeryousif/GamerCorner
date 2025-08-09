@@ -5,7 +5,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(op => op.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
-
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IDeviceService, DeviceService>();
+builder.Services.AddScoped<IGameService, GameService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

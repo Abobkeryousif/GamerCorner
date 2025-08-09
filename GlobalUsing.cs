@@ -1,7 +1,11 @@
-﻿global using GamerCorner.Data;
+﻿global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.EntityFrameworkCore;
-global using System.ComponentModel.DataAnnotations;
 global using Microsoft.AspNetCore.Mvc.Rendering;
-global using Microsoft.AspNetCore.Mvc;
+global using System.ComponentModel.DataAnnotations;
+global using GamerCorner.Data;
 global using GamerCorner.ViewModel;
+global using GamerCorner.Services;
+global using GamerCorner.Models;
+global using GamerCorner.Settings;
+global using GamerCorner.Attribute;
 
