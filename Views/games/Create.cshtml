@@ -40,7 +40,7 @@
             <div class="form-group">
                 <label asp-for="Cover" class="form-label mt-4"></label>
                 <input type="file" class="form-control"  asp-for="Cover">
-                <small class="form-text text-muted">Only Support .png , .jpg , jpeg And Max Size 2MB</small>
+                <small class="form-text text-muted">Only Support @FileSetting.imagePath And Max Size @FileSetting.maxFileSizeInBytes</small>
             </div>
                 <span asp-validation-for="Cover" class="text-danger d-block"></span>
             <button type="submit" class="btn btn-light text-bg-primary mt-3">Save</button>   

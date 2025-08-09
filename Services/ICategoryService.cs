@@ -2,5 +2,6 @@
 {
     public interface ICategoryService
     {
+        IEnumerable<SelectListItem> GetSelectList();
     }
 }

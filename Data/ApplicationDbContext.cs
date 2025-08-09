@@ -39,7 +39,7 @@ namespace GamerCorner.Data
                 .HasKey(e => new
                 {
                     e.GameId,
-                    e.DeciceId
+                    e.DeviceId
                 });
         }
     }
