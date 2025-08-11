@@ -8,4 +8,5 @@ global using GamerCorner.Services;
 global using GamerCorner.Models;
 global using GamerCorner.Settings;
 global using GamerCorner.Attribute;
+global using System.Diagnostics;
 

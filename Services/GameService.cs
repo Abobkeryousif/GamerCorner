@@ -1,4 +1,5 @@
-﻿namespace GamerCorner.Services
+﻿
+namespace GamerCorner.Services
 {
     public class GameService : IGameService
     {
@@ -13,6 +14,13 @@
             _imagesPath = $"{_environment.WebRootPath}{FileSetting.imagePath}";
         }
 
+        public IEnumerable<Game> GetAllGames()
+        {
+            return _context.Games.Include(g=> g.category)
+                .Include(g=> g.Device)
+                .ThenInclude(d=> d.Device)
+                .AsNoTracking().ToList();
+        }
         public async Task Create(CreateGameFormViewModel model)
         {
             var coverName = $"{Guid.NewGuid()}{Path.GetExtension(model.Cover.FileName)}";

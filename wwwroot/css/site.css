@@ -33,3 +33,10 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+.cover-preview {
+    max-width: 550px;
+    max-height: 500px;
+    margin: 7px;
+    padding: 25px;
+}

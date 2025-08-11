@@ -17,16 +17,18 @@
             </div>
             <div class="form-group">
                 <label asp-for="CategoryId" class="form-label mt-4"></label>
-                <select class="form-select" asp-for="CategoryId" asp-items="Model.Categories">
-                    <option>Select Category</option>                  
+                <select class="form-select" asp-for="CategoryId" asp-items="Model.Categories"
+                data-placeholder="Select Category" data-minimum-results-for-search="Infinity">
+                    <option value=""></option>                  
                 </select>
                 <span asp-validation-for="CategoryId" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label asp-for="SelectedDevices" class="form-label mt-4"></label>
-                <select class="form-select" asp-for="SelectedDevices" asp-items="Model.Devices">
-                    <option>Select Platform</option>
+                <select class="form-select" asp-for="SelectedDevices" asp-items="Model.Devices"
+                        data-placeholder="Select Platform"> 
+                    <option></option>
                 </select>
                 <span asp-validation-for="SelectedDevices" class="text-danger"></span>
             </div>
@@ -39,12 +41,42 @@
 
             <div class="form-group">
                 <label asp-for="Cover" class="form-label mt-4"></label>
-                <input type="file" class="form-control"  asp-for="Cover">
-                <small class="form-text text-muted">Only Support @FileSetting.imagePath And Max Size @FileSetting.maxFileSizeInBytes</small>
+                <input type="file" class="form-control"  asp-for="Cover"
+                       data-rule-extension="@FileSetting.allowedExtension.Replace(".", string.Empty)" data-msg-extension="Not Allowed"
+                       data-rule-fileSize="@FileSetting.maxFileSizeInBytes"
+                       data-msg-fileSize="Max File Size Is @FileSetting.maxFileSizeInMB MB">
+                @* Here we Replace '.' With Empty Strig because Libarary Can not read '.'*@
+
+                <small class="form-text text-muted">Only Support @FileSetting.allowedExtension @(FileSetting.maxFileSizeInMB)MB </small>
             </div>
                 <span asp-validation-for="Cover" class="text-danger d-block"></span>
             <button type="submit" class="btn btn-light text-bg-primary mt-3">Save</button>   
             </div>
+        
+        <div class="col-md-6 d-flex justify-content-center overflow-hidden">
+            <img class="cover-preview d-none" alt="Cover">
         </div>
-        <div class="col-md-6"></div>
+        </div>
 </form>
+
+@* Client Side Validation with jQuery File *@
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/filesize.js" asp-append-version="true"></script>
+    <script src="~/js/game.js" asp-append-version="true"></script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

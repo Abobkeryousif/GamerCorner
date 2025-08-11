@@ -2,6 +2,7 @@
 {
     public interface IGameService
     {
+        IEnumerable<Game> GetAllGames();
         Task Create(CreateGameFormViewModel model);
     }
 }
