@@ -41,5 +41,13 @@ namespace GamerCorner.Services
             _context.Add(games);
             _context.SaveChanges();
         }
+
+        public Game? GetGameById(int id)
+        {
+            return _context.Games.Include(g => g.category)
+                .Include(g => g.Device)
+                .ThenInclude(d => d.Device)
+                .AsNoTracking().SingleOrDefault(g=> g.Id == id);
+        }
     }
 }

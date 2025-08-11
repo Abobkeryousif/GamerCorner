@@ -18,7 +18,17 @@
 
         public IActionResult Index()
         {
-            return View();
+            var games = _gameService.GetAllGames();
+            return View(games);
+        }
+
+        public IActionResult Details(int id)
+        {
+            var game = _gameService.GetGameById(id);
+            if(game == null)
+                return NotFound($"Not Found Game With ID: {id}");
+
+            return View(game);
         }
 
         [HttpGet]
